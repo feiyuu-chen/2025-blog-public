@@ -272,5 +272,15 @@
 			"动画"
 		],
 		"stars": 3
+	},
+	{
+		"name": "Koi Pond",
+		"logo": "blob:https://www.yysuni.com/1e032671-0bdb-4658-a4f1-b38b02eb8fc2",
+		"url": "https://www.bubbbly.com/app/koi-pond.html",
+		"description": "创意和美工都很棒",
+		"tags": [
+			"AI"
+		],
+		"stars": 4
 	}
 ]
