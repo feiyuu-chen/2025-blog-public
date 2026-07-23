@@ -1,7 +1,11 @@
 import { NextConfig } from 'next'
 import { codeInspectorPlugin } from 'code-inspector-plugin'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 const nextConfig: NextConfig = {
+	output: 'standalone',
+	basePath,
 	devIndicators: false,
 	reactStrictMode: false,
 	reactCompiler: true,

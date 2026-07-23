@@ -1,0 +1,12 @@
+.git
+.github
+.next
+.open-next
+.vercel
+.wrangler
+node_modules
+npm-debug.log*
+pnpm-debug.log*
+.env*
+*.pem
+README.md
