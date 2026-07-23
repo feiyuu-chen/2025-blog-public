@@ -1,5 +1,5 @@
 [Unit]
-Description=2025 Blog Next.js standalone server
+Description=2025 Blog Next.js server
 After=network-online.target
 Wants=network-online.target
 
@@ -10,7 +10,7 @@ Environment=NODE_ENV=production
 Environment=NEXT_TELEMETRY_DISABLED=1
 Environment=HOSTNAME=0.0.0.0
 Environment=PORT=3001
-ExecStart=/usr/bin/node server.js
+ExecStart=/usr/bin/node /opt/2025-blog-public/current/node_modules/next/dist/bin/next start -H 0.0.0.0 -p 3001
 Restart=always
 RestartSec=5
 

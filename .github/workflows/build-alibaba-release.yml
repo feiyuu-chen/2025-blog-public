@@ -1,4 +1,4 @@
-name: Build Alibaba Cloud release
+name: Build Alibaba Cloud deployment
 
 on:
   push:
@@ -51,33 +51,29 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Package standalone server
+      - name: Prepare deployment branch
         shell: bash
         run: |
           set -euo pipefail
           stage="$RUNNER_TEMP/blog-2025"
-          mkdir -p "$stage/.next"
-          cp -a .next/standalone/. "$stage/"
-          cp -a .next/static "$stage/.next/static"
+          mkdir -p "$stage"
+          cp -a .next "$stage/.next"
+          rm -rf "$stage/.next/cache" "$stage/.next/standalone"
           cp -a public "$stage/public"
-          tar -C "$stage" -czf "$RUNNER_TEMP/blog-2025.tar.gz" .
+          cp package.json next.config.ts "$stage/"
 
-      - name: Publish deployment release
+      - name: Publish deployment branch
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          tag="deploy-${GITHUB_SHA::12}"
-          gh release delete "$tag" --cleanup-tag --yes 2>/dev/null || true
-          gh release create "$tag" "$RUNNER_TEMP/blog-2025.tar.gz#Alibaba Cloud standalone build" \
-            --target "$GITHUB_SHA" \
-            --title "Alibaba deployment ${GITHUB_SHA::7}" \
-            --notes "Automated standalone build for Alibaba Cloud ECS." \
-            --latest
-
-          gh release list --limit 100 --json tagName,publishedAt \
-            --jq 'sort_by(.publishedAt) | reverse | map(select(.tagName | startswith("deploy-"))) | .[5:] | .[].tagName' |
-          while IFS= read -r old_tag; do
-            [ -n "$old_tag" ] && gh release delete "$old_tag" --cleanup-tag --yes
-          done
+          cd "$RUNNER_TEMP/blog-2025"
+          git init --initial-branch=alibaba-build
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --force .next public package.json next.config.ts
+          git commit -m "Deploy ${GITHUB_SHA}"
+          gh auth setup-git
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin HEAD:refs/heads/alibaba-build

@@ -8,7 +8,7 @@ fi
 
 readonly SOURCE_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
-for command in curl flock python3 node; do
+for command in flock git node; do
   if ! command -v "$command" >/dev/null 2>&1; then
     echo "Required command is missing: $command" >&2
     exit 1
@@ -24,5 +24,5 @@ systemctl daemon-reload
 systemctl enable blog-2025.service
 systemctl enable --now blog-2025-deploy.timer
 
-echo "ECS release polling is installed."
-echo "Run /usr/local/sbin/deploy-blog-2025 after the first GitHub release succeeds."
+echo "ECS deployment polling is installed."
+echo "Run /usr/local/sbin/deploy-blog-2025 after the first cloud build succeeds."
