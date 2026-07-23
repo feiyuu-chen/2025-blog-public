@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_TELEMETRY_DISABLED: '1'
+      NEXT_OUTPUT_MODE: server
       NEXT_PUBLIC_GITHUB_OWNER: ${{ github.repository_owner }}
       NEXT_PUBLIC_GITHUB_REPO: ${{ github.event.repository.name }}
       NEXT_PUBLIC_GITHUB_BRANCH: main

@@ -4,7 +4,7 @@ import { codeInspectorPlugin } from 'code-inspector-plugin'
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 const nextConfig: NextConfig = {
-	output: 'standalone',
+	output: process.env.NEXT_OUTPUT_MODE === 'server' ? undefined : 'standalone',
 	basePath,
 	devIndicators: false,
 	reactStrictMode: false,
