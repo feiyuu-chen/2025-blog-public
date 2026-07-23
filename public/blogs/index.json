@@ -1,29 +1,5 @@
 [
   {
-    "slug": "dev-summary",
-    "title": "开发总结",
-    "tags": [
-      "python"
-    ],
-    "date": "2026-05-28T17:45",
-    "summary": "这段时间的开发总结",
-    "cover": "/blogs/dev-summary/6c7db43c84c51f79.svg",
-    "hidden": false,
-    "category": ""
-  },
-  {
-    "slug": "auto-tool",
-    "title": "自动工具",
-    "tags": [
-      "python"
-    ],
-    "date": "2026-05-09T22:31",
-    "summary": "写一款自动工具",
-    "cover": "/blogs/auto-tool/9b88247337ecb91f.webp",
-    "hidden": false,
-    "category": ""
-  },
-  {
     "slug": "curve-arrow",
     "title": "箭头生成小工具",
     "tags": [
