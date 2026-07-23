@@ -1,0 +1,8 @@
+[Unit]
+Description=Pull the latest 2025 Blog GitHub release
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/deploy-blog-2025
