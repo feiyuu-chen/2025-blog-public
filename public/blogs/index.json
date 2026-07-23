@@ -9,60 +9,6 @@
     "category": ""
   },
   {
-    "slug": "live2d-note",
-    "title": "做一个 Live2D",
-    "tags": [
-      "学习",
-      "Live2D",
-      "笔记"
-    ],
-    "date": "2026-02-28T14:40",
-    "summary": "记录 Live2D 软件心得",
-    "cover": "/blogs/live2d-note/bab67a1255a0d0da.webp",
-    "hidden": false,
-    "category": ""
-  },
-  {
-    "slug": "3d-scene-note",
-    "title": "3D 场景搭建笔记",
-    "tags": [
-      "学习",
-      "笔记",
-      "3D"
-    ],
-    "date": "2026-02-06T17:21",
-    "summary": "计划如何计划",
-    "cover": "/blogs/3d-scene-note/96d5437de1d0424f.webp",
-    "hidden": false,
-    "category": ""
-  },
-  {
-    "slug": "3d-blender-note",
-    "title": "3D 与 Blender 笔记",
-    "tags": [
-      "学习",
-      "3D"
-    ],
-    "date": "2026-02-05T17:20",
-    "summary": "遇到一个坑的笔记",
-    "cover": "/blogs/3d-blender-note/d61f14bf7b05d654.webp",
-    "hidden": false,
-    "category": ""
-  },
-  {
-    "slug": "model-animation-note",
-    "title": "模型动画笔记",
-    "tags": [
-      "学习",
-      "建模"
-    ],
-    "date": "2026-02-03T11:40",
-    "summary": "骨骼与动画",
-    "cover": "/blogs/model-animation-note/0655bc33056c4af1.webp",
-    "hidden": false,
-    "category": ""
-  },
-  {
     "slug": "cartoon-note-render",
     "title": "卡通人物建模笔记 · 三",
     "tags": [
