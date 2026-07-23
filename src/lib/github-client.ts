@@ -15,8 +15,17 @@ function handle401Error(): void {
 	}
 }
 
-function handle422Error(): void {
-	toast.error('操作太快了，请操作慢一点')
+async function handle422Error(res: Response): Promise<never> {
+	let detail = ''
+	try {
+		const body = await res.json()
+		detail = body?.message || body?.errors?.[0]?.message || JSON.stringify(body)
+	} catch {
+		// can't parse body, fall through
+	}
+	const msg = detail || `HTTP ${res.status}`
+	toast.error(msg)
+	throw new Error(msg)
 }
 
 export function toBase64Utf8(input: string): string {
@@ -204,7 +213,7 @@ export async function listRepoFilesRecursive(token: string, owner: string, repo:
 			}
 		})
 		if (res.status === 401) handle401Error()
-		if (res.status === 422) handle422Error()
+		if (res.status === 422) await handle422Error(res)
 		if (res.status === 404) return []
 		if (!res.ok) throw new Error(`read directory failed: ${res.status}`)
 		const data: any = await res.json()
