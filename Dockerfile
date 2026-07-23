@@ -13,6 +13,7 @@ RUN pnpm install --frozen-lockfile
 
 FROM base AS builder
 WORKDIR /app
+ENV NEXT_OUTPUT_MODE=standalone
 
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
